@@ -44,7 +44,7 @@ jupyter lab
 ```
 -  prompt상에서 다음과 같이 입력하면 jupyter lab으로 들어가짐
 
-2-1. jupyter lab 
+## 2-1. jupyter lab 
 -  cell로 나눠져 있음 ,추가 가능함, 코드를 입력, 가위 모양이 셀잘라 놓고 복사 가능, 드레그앤드랍으로 셀 순서 조정가능
 -  shift+enter로 확인 셀 실행 가능
 
@@ -58,7 +58,7 @@ python -m ipykernel install --user --name=edu_2
 ```
 위 명령어는 ikernel이라는 가상환경을 설치하는 방법
 
-2-2. vscode
+## 2-2. vscode
   -  extension을 통해 개발환경을 설치할 수 있음
     -  python이라고 입력 -> python, python debugger, indent, extension pack 설치
   -  python file 제작
@@ -91,8 +91,7 @@ b=20
 c = a>b
 print(c)
 ```
-
--   사칙연산
+### 3.1.1 사칙연산
 ```
 num1 = input('첫번째 수 입력:')
 num2d= input('두번째 수 입력:')
@@ -124,8 +123,10 @@ math = int(input('수학 성적을 입력하세요.:'))
 tot = kor + eng + math
 avg = print(name,'의 성적은', tot/3, '입니다.')
 ```
--   조건문
+### 3.1.2 조건문
+
   -   특정 조건을 만족할 때와 만족하지 않을때의 경우를 나눠서
+  -   
 ```
 a = 1
 b = 2
@@ -209,3 +210,115 @@ for b in range(1,10):
    c=a*b
    print("%d x %d=%d" %(a,b,c))
 ```
+
+### 3.1.3 자료형
+
+-   여러 데이터를 모은 집합 형태 자료형
+  -   list : 데이터를 순차적으로 저장(열거)
+  -   tuple  : 값을 변경할 수 없는 데이터 셋(한번 들어간 data가 수정,삭제 불가능)-> remove, append 불가능
+  -   dictionary : 값에 key값을 부여된 집합
+
+```
+#리스트 선언하기
+li = []
+print(type(li))
+li = list()
+print(type(li))
+li = ['a', 1, '0.0', 33]
+## 자료의 갯수 카운트
+print(len(li))
+## 특정 위치의 list data 확인
+print(li[1])
+## list에 다른 데이터 삽입
+li.append(true)
+print(li)
+##문구를 특정위치 삽입
+li.insert(0, 'python')
+## 값을 삭제
+li.remove(1)
+## 하나의 data만 꺼내기
+li.pop(1)
+```
+
+```
+# list에서 sort하기
+li = list(range(1,10))
+print(li)
+## 거꾸로 나오게 함(9,8,7,6,5,4.....1)
+li.sort(reverse=true)
+print(li)
+```
+
+```
+score =[99. 76,34, 43, 27]
+sum = 0
+for i in score:
+   sum = sum + i
+
+avg = sum/ len(score)
+print('총점:', sum, '평균:' + str(avg))
+```
+
+```
+# 로또 번호 예측
+import random
+lotto = []
+for i in range(0,6):
+   r = random.randint(1,45)
+
+   if lotto in r:
+      print('이미 존재')
+   else:
+      lotto.append(r)
+
+print(lotto)
+```
+
+```
+# tuple 선언
+li = list(range(0,2))
+tu = tuple(li)
+print(type(tu))
+```
+
+```
+#dictionary 선언
+_dic = {'a':'1', 'b':'2', 'c':'3'}
+for key in _dic:
+   print(key, _dic[key])
+```
+
+### 4. PDB protein data를 parsing 후, 시각화해보기
+
+-   jupyter notebook에서 실행해야함.
+-    C:/Users/KOBIC/AppData/Local/Programs/Python/Python311/python.exe -m pip install py3Dmol
+  -   위 명령어를 통해 py3Dmol를 다운로드 받기
+
+```
+protein_file='c:/Users/KOBIC/Desktop/edu/protein_result.txt'
+
+pdb_id = []
+
+with open(protein_file, 'r') as file:
+    for line in file:
+        data = line.strip()
+        if 'PDBsum' in data:
+            temp_1 = data.split(',')
+            for text in temp_1:
+                t= text.strip()
+                if t.startswith('PDBsum'):
+                    id = t.split(':')[1]
+                    pdb_id.append(id)
+                    
+print(len(pdb_id))
+print(pdb_id[:10])
+            
+import py3Dmol
+
+
+viewer = py3Dmol.view(query='pdb:' + pdb_id[2])
+viewer.show()
+viewer.setStyle({'cartoon': {'color':'spectrum'}})
+viewer.show()
+```
+
