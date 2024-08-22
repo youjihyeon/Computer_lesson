@@ -64,5 +64,148 @@ python -m ipykernel install --user --name=edu_2
   -  python file 제작
 -코드 입력 중 ctrl + space로 추천받을 수 있음
 
--  ctrl+shfit+p => ikernel 환경을 바꿀 수 있음(?)
-  -  'select interpreter'가 나온다는데 나는 안나옴 ㅜ
+-  ctrl+shfit+p => ikernel 환경을 바꿀 수 있음
+  -  '>'기호가 뜨면, 'python'을 입력하고 'select interpreter'를 클릭
+
+2시에 민방위 예정
+
+-   만약 vscode상에서 명령어에 블럭처리 후, shift+enter를 누르면 바로 command가 run이 됨.
+  -   extension 창에서 'code runner'를 다운로드 후, 실행하면 바로 running 됨.
+
+## 3.1 파이썬의 기본문법
+
+-변수 a에 20을 저장, 즉 변수 a가 가리키는 메모리 공간에 20을 저장한다는 의미
+   -    degital이 처음에 나오는 변수는 사용불가 '1_t = 4'사용불가.
+   -    띄어쓰기 사용불가.
+
+-   int 숫자, string 문자열, boolean true or false, list
+-   자주 사용하는 함수
+  -   split, len, replace, find(특정 문자열에서 어떤 문자가 있는지 없는지 확인하는 코드), upper, lower
+  -    print(text,isspace())
+       -   text라는 문자열에 공백이 있는지 알려줌. -> 공백이 있으면 true로 표시, 공백이 없으면 false 표시
+   
+-   boolean
+```
+a=10
+b=20
+c = a>b
+print(c)
+```
+
+-   사칙연산
+```
+num1 = input('첫번째 수 입력:')
+num2d= input('두번째 수 입력:')
+print(num1, num2, sep='::')
+print(type(num1), type(num2))
+print(num1+num2)
+```
+   -   :을 입력함으로써 run시, 원하는 숫자를 표기할 수 있음
+   -   input함수는 모든 숫자를 int로 받지 않고 string으로 받음
+   -   이렇게 str일 경우, 숫자로 받지 않기때문에 +를 사용하더라도 숫자를 더할 수 없고, 그냥 나열하게 됨.
+     -   이렇게 문자형이나 숫자형으로 데이터를 바꾸는 것이 중요함.
+       
+       ```
+       num1 = int(input('첫번째 수 입력:'))
+       num2 = int(input('두번째 수 입력:'))
+       print(num1, num2, sep='::')
+       print(type(num1), type(num2))
+       print(num1+num2)
+       ```
+- 산술연산자가 int에서만 실행되는가? 아니다. str에서도 같은 방식으로 print가 될 것이다.
+
+-   문제 : 성적 평균구하기
+```
+name = input("학생 이름을 입력하세요:")
+kor = int(input('국어 성적을 입력하세요.:'))
+eng = int(input('영어 성적을 입력하세요.:'))
+math = int(input('수학 성적을 입력하세요.:'))
+
+tot = kor + eng + math
+avg = print(name,'의 성적은', tot/3, '입니다.')
+```
+-   조건문
+  -   특정 조건을 만족할 때와 만족하지 않을때의 경우를 나눠서
+```
+a = 1
+b = 2
+c = a > b
+print(c)
+if a > b:
+   print('a가 b보다 크다.')
+else:
+   print('a가 b보다 작습니다.')
+```
+
+       
+```
+#나이에 따른 목욕탕 입장료
+age = int(input('나이를 입력해주세요:'))
+pay = '3000원'
+if age >= 65 or age < 7:
+   pay = '무료'
+print('입장료는',pay,'입니다.')
+```
+
+```
+#비밀번호 맞고 틀림에 따른 결과 확인
+answer = '12354'
+password = input('비밀번호를 입력해주세요.')
+if password.strip() == answer:
+   print('비밀번호가 맞습니다.')
+else:
+   print('비밀번호가 틀립니다.')
+```
+
+-   strip 함수는 앞뒤에 나온 space를 없애줌
+
+```
+#일반실과 특실을 나눠주는 함수
+# 일반실 = 1, 특실 = 2
+num = int(input('좌석의 종류를 입력해주세요.(일반실:1,특실:2)'))
+   seat1 = '일반실'
+   seat2 = '특실'
+if num == 1:
+   print(seat1)
+elif num == 2:
+   print(seat2)
+else:
+   print('좌석이 존재하지 않습니다.')
+```
+
+```
+# range 설명
+sum = 0
+
+for i in range(1, 10):
+   sum = sum + i
+   print('sum:'+str(sum), '현재 index i:'str(i))
+```
+```
+#range function 사용
+for i in rnage(5):
+   print(i)
+print('완료')
+```
+
+```
+#중간 끊기
+for i in range(5):
+   print(str(i))
+   if i == 2:
+      break
+```
+- 이와 다르게 break말고 continue나 pass를 사용할 수 있음.
+
+```
+#구구단을 외우자
+for i in range(1,10):
+   for j in range(1,10):
+      print('*'*5,str(i),'단','i*j','*'*5)
+   if i == 1:
+      break
+a=2
+for b in range(1,10):
+   c=a*b
+   print("%d x %d=%d" %(a,b,c))
+```
