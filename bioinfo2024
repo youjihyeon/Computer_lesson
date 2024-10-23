@@ -1,0 +1,54 @@
+# 2024한국생명정보학회
+
+## single cell methodology
+### writing and reading genome : functional genomic study with  CRISPR and single-cell sequencing
+- Deeper analysis 
+-   functional genomic study
+### scLENS : data-driven signal detection for unbiased scRNA-seq data analysis
+-  PCs contain various things -> select column ->  random matrix -> L2 norm
+
+### developing data infrastructure and 
+-  quantitatively, positional information
+-  spaital technology
+-   visium
+
+### compuational generation of novel GFP-binding nanobodies
+-   proteingMPNN
+-   RFdiffusion generated backbone structure are provided for template
+-   hypothesis : if predicted structures of designed sequence are consistenet with designed backbones those sequences would be more reliable.
+
+### de novo design of protein nanostructures
+- 다양한 구조(자연에서) : Nanocages, virus capsid 등등
+-   Geometry of the protein nanostructures
+-   goal : desgin principle-> de novo protein design -> experimental vaildation
+
+-   design of de novo protein nanocages(OD)
+
+-  Icosahedral virus capsid -> diverse size
+-   what is different t number? -> local symmetry breaking is the key
+  -  how to break symmetry
+    -  1. programmable assembly
+  -   experimental validations of oligomers
+    -  de novo homo-trimer -(heteromerization)-> de novo hetero trimer
+-   application
+  -   cell internalization
+    -  asgpr ligand와 결합 -> hep3b 형성 -> 
+-   secondary  protein design approach
+  -   parameterizaition of the interaction between 
+    -  hexagon only and pentagon only
+    -  protein design for a given parameter set
+      -  negative stain EM for 1-comp high-T cages
+
+### when structure prediction meets cryo EM
+-  Protein structure prediction
+  -  trRossetta : transforma-restrained rosetta
+  -  casp15 ranking 
+-  cryo-EM structure determination
+  -  step1. predict Ca atoms by U-Net
+  -  step2. predict all- atom structures by cry-net
+    -  key differnet
+      -  local attension
+      -  3d~
+  -  step3. cry fold vs modelangelo
+    -   cryfold build missing structures
+    -  cryfold works well for ultra-large complex
